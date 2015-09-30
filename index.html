@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>MIME Types und Content Negotiation</title>
 
 		<meta name="description" content="Präsentation zu MIME Types and HTTP Content Negotiation">
 		<meta name="author" content="Marco König">
@@ -34,11 +34,12 @@
 		<![endif]-->
 	</head>
 
+    
+    
+    
 	<body>
 
 		<div class="reveal">
-
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				
                 
@@ -46,9 +47,8 @@
                 <!-- Folie 1 -->
                 <section style="text-align: left;">
 					<h2>MIME Types und HTTP Content Negotiation</h2>
-					<p>
-						<small>von Marco König</small>
-					</p>
+					
+                    <p><small>von Marco König</small></p>
                 <aside class="notes">
                 </aside>
 				</section>
@@ -58,11 +58,10 @@
                 <section style="text-align: left;">
                     <h2>Agenda</h2>
                     <ul>
-                    <li>MIME Type</li>
-                        <p>- Geschichte</p>
-                        <p>- Zweck und Verwendung</p>
+                    <li>Was ist ein MIME-Type?</li>
+                        <p>- Allgemeine Beschreibung</p>
                     <li>HTTP Content Negotiation</li>
-                    <li>Beispiel einer Anfrage</li>
+                        <p>- Beispiel einer Anfrage</p>
                     </ul>
                 <aside class="notes">
                 </aside>
@@ -72,15 +71,22 @@
                 
                 <!-- Folie 3 -->
 				<section style="text-align: left;">
-					<h2>MIME-Type</h2>
+					<h2>Was ist ein MIME-Type?</h2>
                     <ul>
-					<li>MIME steht für "Multipurpose Internet Mail Extensions"</li>
-                        <p>- Internet Media Type</p>
-                        <p>- Content Type (Zeichenzusatz und Typ des Inhalts)</p>
-                    <li>Standardisierte Angabe zum Format einer Datei</li>
-                        <p>- <strong>Grundform</strong>: "Kategorie/Unterkategorie"</p>
+                    <li>Internet Media Type</li>
+                    <li>Content Type</li>
+                        <p>- Klassifiziert Daten im Rumpf einer Nachricht</p>
+                    <li>MIME steht für "Multipurpose Internet Mail Extensions"</li>
+                       <p>- Schafft Kompatibilität</p>
                     </ul>
                 <aside class="notes">
+                    - Was ist ein MIME-Type?
+                    -> Internet Media Type / Content-Type
+                    -> Klassifiziert Daten im Rumpf einer Nachricht im Internet
+                    Multipurpose Internet Mail Extensions
+                    - Erweiterung des Internetstandards der das Datenformat von Mail definiert
+                    -> ursprünglich nur ASCII
+                     - Schaffen Kompatibilität für Umlaute und Multimedia (z.B. Anhänge bei Mails)
                     </aside>
 				</section>
                     
@@ -88,13 +94,19 @@
                     
                 <!-- Folie 4 -->
                 <section style="text-align: left;">
-                    <h2>Geschichte</h2>
                     <ul>
-                    <li>Ursprünglich für Multipart-Mails gedacht</li>
-                    <li>Konvention zur Trennung der einzelnen Teile</li>
-                    <li>MIME-Typen Schema</li>
+                        <li><h3>Form eines MIME-Typen:</h3></li>
+                        <img src="scripttype.png"/>
+                        <br></br>
+                    <li>Subtypen für server-eigene Dateiformate:</li>
+                    </br>
+                    <img src="x-subtyp.png"/>
                     </ul>
                 <aside class="notes">
+                    Es gibt unterschiedliche MIME-Typen:
+                    - Setzten sich aus einem Medientyp und einem Subtyp zusammen, SCRIPT ist HTML-Element mit dem Atribut Type -> Wertzuweisung MIME-Type erwartet -> GRUNDFORM (z.B. image/jpeg)
+                    
+                    Subtypen für server-eigene Dateiformate mit "x-"
                     </aside>
                 </section>
                     
@@ -102,31 +114,45 @@
                     
                 <!-- Folie 5 -->
                 <section style="text-align: left;">
-                    <h2>Zweck und Verwendung</h2>
+                    <h2>Allgemeine Beschreibung</h2>
                     <ul>
-                        <li>Kommunikation und Datenübertragung <strong>(Art der Daten)</strong>                             </li>
-                    <li>Klassifiziert Daten im Rumpf einer Nachricht</li>
-                    <li>Sender und Empfänger müssen sich einigen, ob Empfänger MIME-Typ                                  akzeptiert</li>
-                    <li>IANA</li>
-                    <p>- (x-"subtype")</p>
-                    <li>MIME-Sniffing</li>
+                    <li>Austausch von Informationen über Datentyp</li>
+                    <li>Sender und Empfänger müssen sich einigen ob Empfänger MIME-Typ akzeptiert</li>
+                        </br>
+                    <img src="emailmime.png"/>
+                     <br/>
+                    <li>MIME-Version</li>
+                    <li>Content-Type (Internet Media Type)</li>
+                    <li>Content-Transfer-Encoding</li>
                     </ul>
                     <aside class="notes">
+                        MIME ermöglicht zwischen Sender u. Empfänger Informationen über den übermittelten Datentyp auszutauschen (Content-Type-Feld, Internet Media Type)
+                        -> und eine für den verwendeten Übertragungsweg sichere Zeichenkodierung festzulegen (Content-Tranfser-Encoding)
+                        - Findet auch Anwendung bei Deklaration von Inhalten in Internetprotokollen (z.B. HTTP)
+                        - Zusätzliche Felder im Kopf von Mails ...
                     </aside>
                 </section>
                     
                 
                 <!-- Folie 6 -->
                     <section style="text-align: left;">
-                        <h2>HTTP Content Negotiation</h2>
+                        <h3>HTTP Content Negotiation</h3>
                         <ul>
                         <li>Content Negotiation (Inhaltsvereinbarung)</li>
-                        <p>- Technik zur Abstimmung der Inhalte der angefragten Ressource auf die                           Möglichkeiten des Clients</p>
+                        <p>- Technik zur Abstimmung der Inhalte der angefragten Ressource auf die Möglichkeiten des Clients</p>
                         <li>Anfrage-Header-Felder</li>
-                        <p>- Accept-Charset (Liste akzeptierter Zeichensätze)</p>
+                        <p>- Accept (Liste akzeptierter Inhaltstypen)</p>
                         <p>- Gegenstück: Content-Type-Feld</p>
+                        <li>Qualitätsparameter "q"</li>
                         </ul>
                        <aside class="notes">
+                           Unter Content Negotiation versteht man im HTTP eine Technik, die eine Abstimmung der Inhalte der angefragten Ressource aufgrund der Möglichkeiten und Vorzüge des Clients ermöglicht
+                           - zur Inhaltsvereinbarung stehen im HTTP die Anfrage-Header-Felder :
+                           Accept, Accept-Charset, Accept-Encoding, Accept-Language
+                           zur Verfügung
+                        
+                           Accept ist z.B. Liste aller akzeptieren Inhalte, Content-Type-Feld ist Gegenstück zu dieser Anfrage
+                           Bewertung durch Qualitätsparameter "q" von 0-1 (optional)
                         </aside>
                     
                     
@@ -144,6 +170,7 @@
 						<a href="#" class="navigate-down">
 						</a>
                         <aside class="notes">
+                        
                         </aside>
                         
                         
@@ -160,6 +187,9 @@
                         ```
                         </script>
                       <aside class="notes">
+                          Client (Browser) fragt Web-Server an mit dem Anfrage-Header-Feld : Accept-Language
+                            
+                            Bevorzugt Bundesdeutsches Hochdeutsch vor allen Deutsch Varianten und angegebenen Sprachen
                         </aside>
 					</section>
                     
@@ -169,7 +199,7 @@
 					<section data-markdown>
 						<br>
 						<a href="#/2">
-                            <script type=teyt/template>
+                            <script type=text/template>
                             <h2>Antwort des Servers</h2>
                             
                             ```
@@ -181,6 +211,8 @@
                             </script>
 						</a>
                     <aside class="notes">
+                        Deutschsprachiger Content wird geladen, ohne Varietät des standarddeutschen zu spezifieren
+                        HTTP Statudscode : OK
                         </aside>
 					</section>
 				</section>
