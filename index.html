@@ -104,7 +104,7 @@
                     </ul>
                 <aside class="notes">
                     Es gibt unterschiedliche MIME-Typen:
-                    - Setzten sich aus einem Medientyp und einem Subtyp zusammen, SCRIPT ist HTML-Element mit dem Atribut Type -> Wertzuweisung MIME-Type erwartet -> GRUNDFORM (z.B. image/jpeg)
+                    - Setzten sich aus einem Medientyp und einem Subtyp zusammen, SCRIPT ist HTML-Element mit dem Atribut Type -> Wertzuweisung MIME-Type erwartet
                     
                     Subtypen für server-eigene Dateiformate mit "x-"
                     </aside>
@@ -126,9 +126,12 @@
                     <li>Content-Transfer-Encoding</li>
                     </ul>
                     <aside class="notes">
-                        MIME ermöglicht zwischen Sender u. Empfänger Informationen über den übermittelten Datentyp auszutauschen (Content-Type-Feld, Internet Media Type)
-                        -> und eine für den verwendeten Übertragungsweg sichere Zeichenkodierung festzulegen (Content-Tranfser-Encoding)
+                        MIME ermöglicht zwischen Sender u. Empfänger Informationen über den übermittelten Datentyp auszutauschen (Content-Type-Feld bzw. Internet Media Type)
+                        
+                        -> und eine sichere Zeichenkodierung festzulegen (Content-Tranfser-Encoding)
+                        
                         - Findet auch Anwendung bei Deklaration von Inhalten in Internetprotokollen (z.B. HTTP)
+                        
                         - Zusätzliche Felder im Kopf von Mails ...
                     </aside>
                 </section>
@@ -146,10 +149,13 @@
                         <li>Qualitätsparameter "q"</li>
                         </ul>
                        <aside class="notes">
-                           Unter Content Negotiation versteht man im HTTP eine Technik, die eine Abstimmung der Inhalte der angefragten Ressource aufgrund der Möglichkeiten und Vorzüge des Clients ermöglicht
-                           - zur Inhaltsvereinbarung stehen im HTTP die Anfrage-Header-Felder :
+                           Technik im HTTP
+                           Ermöglicht Abstimmung zwischen Client und Server
+                           Client gibt an, was er am ehesten versteht
+                           Server bietet Optionen an
+                           - zur Inhaltsvereinbarung stehen im HTTP die Anfrage-Header-Felder zur Verfügung:
                            Accept, Accept-Charset, Accept-Encoding, Accept-Language
-                           zur Verfügung
+                           
                         
                            Accept ist z.B. Liste aller akzeptieren Inhalte, Content-Type-Feld ist Gegenstück zu dieser Anfrage
                            Bewertung durch Qualitätsparameter "q" von 0-1 (optional)
